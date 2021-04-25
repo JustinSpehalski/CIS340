@@ -1,21 +1,24 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
 
-export default function App() {
+import React, {Component} from 'react';
+import { Text, View } from 'react-native';
+
+export default function WordConvertor() {
+  
+  const [text, setText]=useState('');
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <View style={{padding: 60}}>
+      <TextInput
+      style={{height: 40}}
+      placeholder="Input your text here!"
+      onChangeText={text => setText(text)}
+      defaultvalue={text}
+      />
+      <Text style={{padding: 10, fontsize: 42}}>
+        {text.split(' ').map((word) => word && '*').join(' ')}
+        </Text>
+
+      </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
